@@ -4,7 +4,13 @@ import projectContext from '../../context/projects/projectContex'
 const NewProject = () => {
 
     const projectsContext = useContext(projectContext)
-    const { form, showForm,addProject } = projectsContext;
+    const {
+        form,
+        errorform,
+        showForm,
+        addProject,
+        showError
+    } = projectsContext;
 
     const [project, setProject] = useState({
         name: ''
@@ -19,14 +25,15 @@ const NewProject = () => {
     const onSubmitProject = e => {
         e.preventDefault();
         //validacion
-        if(name===''){
+        if (name === '') {
+            showError();
             return;
         }
         // agegar al state
         addProject(project);
         // reiniciar
         setProject({
-            name:''
+            name: ''
         })
     }
     return (
@@ -34,7 +41,7 @@ const NewProject = () => {
             <button
                 type="button"
                 className="btn btn-block btn-primary"
-                onClick={()=>showForm()}
+                onClick={() => showForm()}
             >
                 New Project
             </button>
@@ -59,8 +66,8 @@ const NewProject = () => {
                                 value="Add project"
                             />
                         </form>)
-                    :null
-            }
+                    : null}
+            {errorform ? <p className="message error">The name project is required</p> : null}
         </Fragment>
     );
 }
