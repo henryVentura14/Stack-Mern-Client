@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import { uuid } from 'uuidv4'
-import projectContext from './projectContex'
-import projectReducer from './projectReducer'
+import ProjectContext from './projectContex'
+import ProjectReducer from './projectReducer'
 import {
   FORM_PROJECT,
   GET_PROJECTS,
@@ -25,7 +25,7 @@ const ProjectState = props => {
     project: null
   }
   //dispatch
-  const [state, dispatch] = useReducer(projectReducer, initialState)
+  const [state, dispatch] = useReducer(ProjectReducer, initialState)
   const showForm = () => {
     dispatch({
       type: FORM_PROJECT
@@ -69,7 +69,7 @@ const ProjectState = props => {
   }
 
   return (
-    <projectContext.Provider
+    <ProjectContext.Provider
       value={{
         form: state.form,
         projects: state.projects,
@@ -84,7 +84,7 @@ const ProjectState = props => {
       }}
     >
       {props.children}
-    </projectContext.Provider>
+    </ProjectContext.Provider>
   )
 }
 

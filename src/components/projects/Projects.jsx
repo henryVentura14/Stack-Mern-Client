@@ -1,8 +1,8 @@
 import React from 'react';
 import Sidebar from '../layout/Sidebar'
 import Navbar from '../layout/Navbar'
-import FormTask from '../task/FormTask'
-import ListTask from '../task/ListTask'
+import FormTask from '../tasks/FormTask'
+import ListTask from '../tasks/ListTask'
 
 const Projects = () => {
     return (

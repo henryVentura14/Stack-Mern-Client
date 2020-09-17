@@ -1,16 +1,27 @@
 import React, { useContext } from 'react';
-import projectContext from '../../context/projects/projectContex'
+import ProjectContext from '../../context/projects/projectContex'
+import TaskContext from '../../context/tasks/taskContext'
 
 const Project = ({ project }) => {
-    const projectsContext = useContext(projectContext)
+    //context project
+    const projectsContext = useContext(ProjectContext)
     const { currentProject } = projectsContext;
+    
+    //context task
+    const tasksContext = useContext(TaskContext)
+    const { getTask } = tasksContext;
 
+    //Functions
+    const selectProject = id => {
+        currentProject(id)
+        getTask(id);
+    }
     return (
         <li>
             <button
                 type="button"
                 className="btn btn-blank"
-                onClick={() => currentProject(project.id)}
+                onClick={()=>selectProject(project.id)}
             >
                 {project.name}
             </button>
