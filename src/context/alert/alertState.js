@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react'
-import { uuid } from 'uuidv4'
 import AlertContext from './alertContext.js'
 import AlertReducer from './alertReducer'
 import { HIDE_ALERT, SHOW_ALERT } from '../../types'

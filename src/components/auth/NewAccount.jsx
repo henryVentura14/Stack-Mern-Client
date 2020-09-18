@@ -1,13 +1,26 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import AlertContext from '../../context/alert/alertContext'
+import AuthContext from '../../context/auth/authContext'
 
-const NewAccount = () => {
+const NewAccount = (props) => {
 
-    //CONTEXT
+    //CONTEXT alet
     const alertContext = useContext(AlertContext)
     const { alert, showAlert } = alertContext
+    //CONTEXT AUTH
+    const authContext = useContext(AuthContext)
+    const { message, auth, signUp } = authContext
 
+    //useEffect
+    useEffect(() => {
+        if (auth){
+            props.history.push('/projects')
+        }
+        if(message){
+            showAlert(message.message, message.category)
+        }
+    }, [message, auth, props.history])
     //ESTATE
     const [user, saveUser] = useState({
         name: '',
@@ -36,10 +49,16 @@ const NewAccount = () => {
             showAlert('Password must include at least 6 characters', 'alert-error')
             return
         }
-        if(password!==confirm){
+        if (password !== confirm) {
             showAlert('Password don`t match', 'alert-error')
             return
         }
+        //pasando data
+        signUp({
+            name,
+            email,
+            password
+        })
 
     }
     return (

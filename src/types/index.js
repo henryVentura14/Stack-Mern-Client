@@ -20,3 +20,10 @@ export const CLEAN_TASK = 'CLEAN_TASK'
 export const SHOW_ALERT = 'SHOW_ALERT'
 export const HIDE_ALERT = 'HIDE_ALERT'
 
+//AUHT
+export const SUCCESS_SIGNUP = 'SUCCESS_SIGNUP'
+export const ERROR_SIGNUP = 'ERROR_SIGNUP'
+export const GET_USER = 'GET_USER'
+export const SUCCESS_LOGIN = 'SUCCESS_LOGIN'
+export const ERROR_LOGIN = 'ERROR_LOGIN'
+export const CLOSE_SESSION = 'CLOSE_SESSION'
