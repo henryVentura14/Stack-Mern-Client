@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react'
 import axiosClient from '../../config/axios'
+import authToken from '../../config/token'
 import AuthContext from './authContext.js'
 import AuthReducer from './authReducer'
 import {
@@ -23,20 +24,17 @@ const AuthState = props => {
   const [state, dispatch] = useReducer(AuthReducer, initialState)
 
   //functions
-  const getUser = user => {
-    dispatch({
-      type: GET_USER,
-      payload: user
-    })
-  }
+  // REGISTRO DE USUARIO
 
-  const signUp = async data => {
+  const signupUser = async data => {
     try {
       const response = await axiosClient.post('/api/users', data)
       dispatch({
         type: SUCCESS_SIGNUP,
         payload: response.data
       })
+      //get user
+      authUser()
     } catch (error) {
       const alert = {
         message: error.response.data.msg,
@@ -48,7 +46,45 @@ const AuthState = props => {
       })
     }
   }
-
+  // LOGIN DE USUARIO
+  const loginUser = async data => {
+    try {
+      const response = await axiosClient.post('/api/auth', data)
+      dispatch({
+        type: SUCCESS_LOGIN,
+        payload: response.data
+      })
+      //get user
+      authUser()
+    } catch (error) {
+      const alert = {
+        message: error.response.data.msg,
+        category: 'alert-error'
+      }
+      dispatch({
+        type: ERROR_LOGIN,
+        payload: alert
+      })
+    }
+  }
+  // AUTENTICAR USUARIO
+  const authUser = async () => {
+    const token = localStorage.getItem('')
+    if (token) {
+      authToken(token)
+    }
+    try {
+      const response = await axiosClient.get('/api/auth')
+      dispatch({
+        type: GET_USER,
+        payload: response.data.user
+      })
+    } catch (error) {
+      dispatch({
+        type: ERROR_LOGIN
+      })
+    }
+  }
   return (
     <AuthContext.Provider
       value={{
@@ -56,8 +92,8 @@ const AuthState = props => {
         auth: state.auth,
         message: state.message,
         token: state.token,
-        getUser,
-        signUp
+        signupUser,
+        loginUser
       }}
     >
       {props.children}

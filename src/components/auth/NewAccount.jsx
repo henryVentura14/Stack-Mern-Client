@@ -5,12 +5,12 @@ import AuthContext from '../../context/auth/authContext'
 
 const NewAccount = (props) => {
 
-    //CONTEXT alet
+    //CONTEXT alert
     const alertContext = useContext(AlertContext)
     const { alert, showAlert } = alertContext
     //CONTEXT AUTH
     const authContext = useContext(AuthContext)
-    const { message, auth, signUp } = authContext
+    const { message, auth, signupUser } = authContext
 
     //useEffect
     useEffect(() => {
@@ -54,7 +54,7 @@ const NewAccount = (props) => {
             return
         }
         //pasando data
-        signUp({
+        signupUser({
             name,
             email,
             password
