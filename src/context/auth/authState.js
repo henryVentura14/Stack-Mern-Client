@@ -30,8 +30,6 @@ const AuthState = props => {
   const signupUser = async data => {
     try {
       const response = await axiosClient.post('/api/users', data)
-      console.log(response.data)
-
       dispatch({
         type: SUCCESS_SIGNUP,
         payload: response.data
@@ -39,7 +37,6 @@ const AuthState = props => {
       //get user
       authUser()
     } catch (error) {
-      console.log(error.response.data.msg)
       const alert = {
         message: error.response.data.msg,
         category: 'alert-error'
@@ -63,7 +60,6 @@ const AuthState = props => {
         payload: response.data.user
       })
     } catch (error) {
-      console.log(error.response.data.msg)
       dispatch({
         type: ERROR_LOGIN
       })

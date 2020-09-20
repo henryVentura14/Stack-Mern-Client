@@ -12,6 +12,7 @@ const Projects = () => {
     //USE EFFECT
     useEffect(() => {
         authUser()
+        // eslint-disable-next-line
     }, [])
     return (
         <div className="content-app">

@@ -14,12 +14,13 @@ const NewAccount = (props) => {
 
     //useEffect
     useEffect(() => {
-        if (auth){
+        if (auth) {
             props.history.push('/projects')
         }
-        if(message){
+        if (message) {
             showAlert(message.message, message.category)
         }
+        // eslint-disable-next-line
     }, [message, auth, props.history])
     //ESTATE
     const [user, saveUser] = useState({

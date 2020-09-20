@@ -20,6 +20,7 @@ const Login = (props) => {
         if (message) {
             showAlert(message.message, message.category)
         }
+        // eslint-disable-next-line
     }, [message, auth, props.history])
     const [user, saveUser] = useState({
         email: '',

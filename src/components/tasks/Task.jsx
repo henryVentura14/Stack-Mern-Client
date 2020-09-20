@@ -12,7 +12,7 @@ const Task = ({ task }) => {
 
     //task
     const tasksContext = useContext(TaskContext)
-    const { deleteTask, getTask, changeStateTask, saveCurrentTask } = tasksContext;
+    const { deleteTask, getTask, updateTask, saveCurrentTask } = tasksContext;
     //Functiom change state task
     const changeState = task => {
         if (task.state) {
@@ -20,7 +20,7 @@ const Task = ({ task }) => {
         } else {
             task.state = true
         }
-        changeStateTask(task)
+        updateTask(task)
     }
     //Function update
     const selectedTask = task => {
@@ -29,7 +29,7 @@ const Task = ({ task }) => {
 
     //Function delete
     const taskDelete = id => {
-        deleteTask(id)
+        deleteTask(id, currentproject._id)
         getTask(currentproject.id)
     }
     return (
@@ -62,7 +62,7 @@ const Task = ({ task }) => {
                 <button
                     type="button"
                     className="btn btn-secondary"
-                    onClick={() => taskDelete(task.id)}
+                    onClick={() => taskDelete(task._id)}
                 >
                     Eliminar</button>
             </div>

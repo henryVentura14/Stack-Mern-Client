@@ -54,8 +54,7 @@ const FormTask = () => {
         }
         //REVISAR UPDATE O NEW TASK
         if(selectedtask===null){
-            task.projectId = currentproject.id;
-            task.state = false;
+            task.project = currentproject._id;
             addTask(task);
         }else{
             updateTask(task)
