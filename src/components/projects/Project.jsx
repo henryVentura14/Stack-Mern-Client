@@ -6,7 +6,7 @@ const Project = ({ project }) => {
     //context project
     const projectsContext = useContext(ProjectContext)
     const { currentProject } = projectsContext;
-    
+
     //context task
     const tasksContext = useContext(TaskContext)
     const { getTask } = tasksContext;
@@ -21,7 +21,7 @@ const Project = ({ project }) => {
             <button
                 type="button"
                 className="btn btn-blank"
-                onClick={()=>selectProject(project.id)}
+                onClick={() => selectProject(project.id)}
             >
                 {project.name}
             </button>

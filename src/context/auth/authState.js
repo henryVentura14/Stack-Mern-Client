@@ -17,18 +17,21 @@ const AuthState = props => {
     token: localStorage.getItem('token'),
     auth: null,
     user: null,
-    message: null
+    message: null,
+    loading: true
   }
 
   //dispatch
   const [state, dispatch] = useReducer(AuthReducer, initialState)
 
   //functions
-  // REGISTRO DE USUARIO
 
+  // REGISTRO DE USUARIO
   const signupUser = async data => {
     try {
       const response = await axiosClient.post('/api/users', data)
+      console.log(response.data)
+
       dispatch({
         type: SUCCESS_SIGNUP,
         payload: response.data
@@ -36,6 +39,7 @@ const AuthState = props => {
       //get user
       authUser()
     } catch (error) {
+      console.log(error.response.data.msg)
       const alert = {
         message: error.response.data.msg,
         category: 'alert-error'
@@ -43,6 +47,25 @@ const AuthState = props => {
       dispatch({
         type: ERROR_SIGNUP,
         payload: alert
+      })
+    }
+  }
+  // AUTENTICAR USUARIO
+  const authUser = async () => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      authToken(token)
+    }
+    try {
+      const response = await axiosClient.get('/api/auth')
+      dispatch({
+        type: GET_USER,
+        payload: response.data.user
+      })
+    } catch (error) {
+      console.log(error.response.data.msg)
+      dispatch({
+        type: ERROR_LOGIN
       })
     }
   }
@@ -67,23 +90,11 @@ const AuthState = props => {
       })
     }
   }
-  // AUTENTICAR USUARIO
-  const authUser = async () => {
-    const token = localStorage.getItem('')
-    if (token) {
-      authToken(token)
-    }
-    try {
-      const response = await axiosClient.get('/api/auth')
-      dispatch({
-        type: GET_USER,
-        payload: response.data.user
-      })
-    } catch (error) {
-      dispatch({
-        type: ERROR_LOGIN
-      })
-    }
+  //CERRAR SESSION
+  const closeSession = () => {
+    dispatch({
+      type: CLOSE_SESSION
+    })
   }
   return (
     <AuthContext.Provider
@@ -92,8 +103,11 @@ const AuthState = props => {
         auth: state.auth,
         message: state.message,
         token: state.token,
+        loading: state.loading,
         signupUser,
-        loginUser
+        loginUser,
+        authUser,
+        closeSession
       }}
     >
       {props.children}

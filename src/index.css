@@ -105,6 +105,17 @@ a {
   background-color: transparent;
 }
 
+.close-session {
+  color  : var(--blanco);
+  border : solid 1px transparent;
+  padding: 1rem;
+}
+
+.close-session:hover {
+  border : solid 1px var(--blanco);
+  padding: 1rem;
+}
+
 @media (min-width: 768px) {
   .content-app {
     display   : flex;

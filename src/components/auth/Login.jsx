@@ -38,7 +38,6 @@ const Login = (props) => {
         e.preventDefault();
         if (email.trim() === '' || password.trim() === '') {
             showAlert('All fields are required', 'alert-error')
-            return
         }
         loginUser({ email, password })
     }
