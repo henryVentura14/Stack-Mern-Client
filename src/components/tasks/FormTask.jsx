@@ -61,7 +61,7 @@ const FormTask = () => {
             cleanTask()
         }
         //GET TASK
-        getTask(currentproject.id);
+        getTask(currentproject._id);
 
         //RESET FORM
         setTask({

@@ -33,7 +33,9 @@ const TaskState = props => {
         type: TASK_PROJECT,
         payload: result.data.task
       })
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
   }
   //AGREGAR LAS TAREAS
   const addTask = async task => {
