@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import ProjectContext from '../../context/projects/projectContex'
 import TaskContext from '../../context/tasks/taskContext'
+import ModalContext from '../../context/modal/modalContext'
 
 const Task = ({ task }) => {
     //project
@@ -12,7 +13,10 @@ const Task = ({ task }) => {
 
     //task
     const tasksContext = useContext(TaskContext)
-    const { deleteTask, getTask, updateTask, saveCurrentTask } = tasksContext;
+    const { getTask, updateTask, saveCurrentTask } = tasksContext;
+    //context modal
+    const modalContext = useContext(ModalContext)
+    const { showModal } = modalContext;
     //Functiom change state task
     const changeState = task => {
         if (task.state) {
@@ -29,7 +33,7 @@ const Task = ({ task }) => {
 
     //Function delete
     const taskDelete = id => {
-        deleteTask(id, currentproject._id)
+        showModal(task.name, 'task', id, currentproject._id)
         getTask(currentproject.id)
     }
     return (

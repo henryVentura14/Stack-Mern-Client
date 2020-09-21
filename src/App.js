@@ -8,6 +8,7 @@ import ProjectState from './context/projects/projectState'
 import TaskState from './context/tasks/taskState'
 import AlertState from './context/alert/alertState'
 import AuthState from './context/auth/authState'
+import ModalState from './context/modal/modalState'
 import authToken from './config/token'
 
 const token = localStorage.getItem('token')
@@ -21,13 +22,15 @@ const App = () => {
       <TaskState>
         <AlertState>
           <AuthState>
-            <Router>
-              <Switch>
-                <Route exact path='/' component={Login} />
-                <Route exact path='/new-account' component={NewAccount} />
-                <PrivateRoute exact path='/projects' component={Projects} />
-              </Switch>
-            </Router>
+            <ModalState>
+              <Router>
+                <Switch>
+                  <Route exact path='/' component={Login} />
+                  <Route exact path='/new-account' component={NewAccount} />
+                  <PrivateRoute exact path='/projects' component={Projects} />
+                </Switch>
+              </Router>
+            </ModalState>
           </AuthState>
         </AlertState>
       </TaskState>

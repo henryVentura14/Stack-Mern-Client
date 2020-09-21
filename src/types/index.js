@@ -7,7 +7,6 @@ export const CURRENT_PROJECT = 'CURRENT_PROJECT'
 export const DELETE_PROJECT = 'DELETE_PROJECT'
 export const ERROR_PROJECT = 'ERROR_PROJECT'
 
-
 //TASK
 export const TASK_PROJECT = 'TASK_PROJECT'
 export const ADD_TASK = 'ADD_TASK'
@@ -29,3 +28,7 @@ export const GET_USER = 'GET_USER'
 export const SUCCESS_LOGIN = 'SUCCESS_LOGIN'
 export const ERROR_LOGIN = 'ERROR_LOGIN'
 export const CLOSE_SESSION = 'CLOSE_SESSION'
+
+//MODAL
+export const MODAL_SHOW = 'MODAL_SHOW'
+export const MODAL_HIDE = 'MODAL_HIDE'

@@ -2,22 +2,27 @@ import React, { Fragment, useContext } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import ProjectContext from '../../context/projects/projectContex'
 import TaskContext from '../../context/tasks/taskContext'
+import ModalContext from '../../context/modal/modalContext'
+
 import Task from './Task'
 
 const ListTask = () => {
-
+    //context prject
     const projectsContext = useContext(ProjectContext)
-    const { project, deleteProject } = projectsContext;
+    const { project } = projectsContext;
     //context task
     const tasksContext = useContext(TaskContext)
     const { taskprojects } = tasksContext;
+    //context modal
+    const modalContext = useContext(ModalContext)
+    const { showModal } = modalContext;
 
     if (!project) return <h2>Selecto one project</h2>
 
     const [currentproject] = project
 
     const onClickDelete = () => {
-        deleteProject(currentproject._id)
+        showModal(currentproject.name, 'project', '', currentproject._id)
     }
     return (
         <Fragment>
@@ -30,7 +35,7 @@ const ListTask = () => {
                         <TransitionGroup>
                             {taskprojects.map(task => (
                                 <CSSTransition
-                                    key={task.id}
+                                    key={task._id + task.name}
                                     timeout={200}
                                     classNames="task"
                                 >

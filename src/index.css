@@ -1,6 +1,6 @@
 :root {
   --blanco     : #ffffff;
-  --gris1      : #edf2f6;
+  --gris1      : #dbd8e3;
   --gris2      : #2f3848;
   --gris3      : #1a202d;
   --negro      : #000000;
@@ -70,6 +70,7 @@ a {
   border-radius: .5rem;
   border       : none;
   transition   : background-color .3s ease;
+  min-width: 7rem;
 }
 
 .btn:hover {
@@ -89,6 +90,12 @@ a {
   background-color: var(--gris1);
 }
 
+.btn:hover,
+.btn-secondary:hover {
+  background-color: var(--gris3);
+  color           : var(--blanco);
+}
+
 .btn-block {
   display: block;
   width  : 100%;
@@ -100,7 +107,7 @@ a {
 
 .btn-blank {
   margin          : 0;
-  padding         : 0;
+  padding         : 0.2rem;
   display         : block;
   background-color: transparent;
 }
@@ -411,4 +418,96 @@ aside {
 .alert-error {
   background-color: rgb(230, 78, 78);
   color           : var(--blanco);
+}
+
+.modal {
+  position        : fixed;
+  border-radius   : .5rem;
+  color           : #727272;
+  top             : 30%;
+  left            : 40%;
+  width           : 25%;
+  height          : 18%;
+  min-height      : 8rem;
+  border          : solid 1px #BFBFBF;
+  background-color: var(--blanco);
+  text-align      : center;
+  z-index         : 99;
+  box-shadow      : 0px 0px 4px 0px;
+}
+
+.row {
+  display        : flex;
+  width          : 100%;
+  flex-direction : row;
+  justify-content: flex-end;
+  justify-items  : flex-end;
+}
+
+.iconClose {
+  margin-top  : .4rem;
+  margin-right: .4rem;
+  cursor      : pointer;
+  display     : block;
+  width       : 24px;
+  height      : 24px;
+  position    : relative;
+  z-index     : 99;
+}
+.iconClose:hover{
+  color:var(--negro)
+}
+
+
+.content-modal {
+  width          : 100%;
+  height         : 70%;
+  display        : flex;
+  flex-direction : column;
+  justify-items  : space-between;
+  justify-content: space-between;
+  align-items    : center;
+  align-content  : center;
+}
+
+.title-modal {
+  margin: 0;
+  color : var(--gris2);
+  font-size: 2.5rem;
+}
+
+@media (max-width:640px) {
+  .title-modal {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  .modal {
+    top             : 40%;
+    left            : 40%;
+    width           : 35%;
+    height          : 22%;
+  }
+}
+
+.desc-modal {
+  font-size: 1.2rem;
+  color    : var(--gris2);
+
+}
+
+.button-modal {
+  text-align      : center;
+  cursor          : pointer;
+  width           : 50%;
+  height          : 3rem;
+  border          : solid 1px transparent;
+  color           : var(--blanco);
+  background-color: var(--gris3);
+  font-size       : 1.6rem;
+}
+
+.button-modal:hover{
+  color           : var(--gris3);
+  background-color: var(--blanco);
+  border          : solid 1px var(--gris3);
 }
