@@ -51,7 +51,7 @@ const ListTask = () => {
                 className="btn btn-delete"
                 type="button"
                 onClick={onClickDelete}
-            >Delete project &times;</button>
+            >Delete project <i className="material-icons">delete</i></button>
         </Fragment>
     );
 }

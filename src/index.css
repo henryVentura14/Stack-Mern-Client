@@ -70,7 +70,7 @@ a {
   border-radius: .5rem;
   border       : none;
   transition   : background-color .3s ease;
-  min-width: 7rem;
+  min-width    : 7rem;
 }
 
 .btn:hover {
@@ -112,6 +112,14 @@ a {
   background-color: transparent;
 }
 
+.btn-delete, .close-session {
+  display        : flex;
+  justify-content: center;
+  justify-items  : center;
+  align-items    : center;
+  align-content  : space-around;
+}
+
 .close-session {
   color  : var(--blanco);
   border : solid 1px transparent;
@@ -119,7 +127,6 @@ a {
 }
 
 .close-session:hover {
-  border : solid 1px var(--blanco);
   padding: 1rem;
 }
 
@@ -454,8 +461,9 @@ aside {
   position    : relative;
   z-index     : 99;
 }
-.iconClose:hover{
-  color:var(--negro)
+
+.iconClose:hover {
+  color: var(--negro)
 }
 
 
@@ -471,21 +479,22 @@ aside {
 }
 
 .title-modal {
-  margin: 0;
-  color : var(--gris2);
+  margin   : 0;
+  color    : var(--gris2);
   font-size: 2.5rem;
 }
 
 @media (max-width:640px) {
   .title-modal {
-    font-size: 1.8rem;
+    font-size  : 1.8rem;
     font-weight: 600;
   }
+
   .modal {
-    top             : 40%;
-    left            : 40%;
-    width           : 35%;
-    height          : 22%;
+    top   : 40%;
+    left  : 40%;
+    width : 35%;
+    height: 22%;
   }
 }
 
@@ -506,7 +515,7 @@ aside {
   font-size       : 1.6rem;
 }
 
-.button-modal:hover{
+.button-modal:hover {
   color           : var(--gris3);
   background-color: var(--blanco);
   border          : solid 1px var(--gris3);

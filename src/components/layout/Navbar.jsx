@@ -20,6 +20,7 @@ const Navbar = () => {
                     onClick={() => closeSession()}
                 >
                     Close session
+                    <i className="material-icons">exit_to_app</i>
                 </button>
             </nav>
         </header>
